@@ -77,7 +77,7 @@ print(y)
 print(x.shape)
 print(y.shape)'''
 lr = 0.0001
-lam = 0.0001
+lam = 0.001
 beta_1 = np.full(x[0].shape, 0.9)
 beta_2 = np.full(x[0].shape, 0.99)
 w = np.full(x[0].shape, 0)
@@ -89,7 +89,7 @@ t = 0
 epsilon = 0.00000001
 bias = 0
 
-for num in range(1000000):
+for num in range(100000):
 	if num%1000 == 0 and num >= 1000:
 		RMS = 0
 		for i in range(len(x)):
@@ -106,7 +106,7 @@ for num in range(1000000):
 	idx = random.randint(0, len(x)-1)
 	xt = x[idx].transpose()
 	loss = y[idx] - np.dot(x[idx],w) - bias 
-	g_t = np.dot(xt,loss) * (-2) #+  2 * lam * np.sum(w)
+	g_t = np.dot(xt,loss) * (-2) +  2 * lam * np.sum(w)
 	g_t_b = loss * (-2)
 	m_t = beta_1*m_t + (1-beta_1)*g_t 
 	v_t = beta_2*v_t + (1-beta_2)*(g_t*g_t) 
