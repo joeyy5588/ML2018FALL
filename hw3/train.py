@@ -113,7 +113,7 @@ def valid():
 	print('Valid Avg. Loss: %f, Accuracy: %f' % (avg_loss, acc))
 	acc_list1.append(acc)
 	loss_list1.append(avg_loss)
-
+'''
 def plotData(plt, x_data, y_data, y1_data, y_label):
 	x = [p for p in x_data]
 	y = [q for q in y_data]
@@ -125,7 +125,7 @@ def plotData(plt, x_data, y_data, y1_data, y_label):
 	plt.plot(x, y1, '-.', label = 'train')
 	plt.savefig(y_label)
 	plt.close('all')
-
+'''
 def train_and_test(epoch):
 	train(epoch)
 	valid()
@@ -133,8 +133,9 @@ def train_and_test(epoch):
 
 for e in range(1, 500):
 	train_and_test(e)
-
+'''
 epoch_list = list(range(1, 500))
 plotData(plt, epoch_list, acc_list, acc_list1, 'Training accuracy')
 plotData(plt, epoch_list, loss_list, loss_list1, 'Training loss')
+'''
 torch.save(net.state_dict(), sys.argv[2])
